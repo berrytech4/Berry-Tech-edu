@@ -3,45 +3,164 @@
   <head>
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#007bff" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BERRY TECH EDU</title>
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#007bff" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 50px;
-        background: #f0f4ff;
-      }
-      h1 {
-        color: #007bff;
-      }
-      a.button {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 15px 30px;
-        font-size: 18px;
-        color: white;
-        background: #007bff;
-        text-decoration: none;
-        border-radius: 12px;
-        transition: background 0.3s;
-      }
-      a.button:hover {
-        background: #0056b3;
-      }
-    </style>
+    head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Berry Tech EduConnect</title>
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#007bff" />
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: #f0f4ff;
+          }
+          h1 {
+            color: #007bff;
+          }
+          a.button,
+          button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background: #007bff;
+            text-decoration: none;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+          }
+          a.button:hover,
+          button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+          }
+
+          /* WhatsApp share button (on page) */
+          .whatsapp {
+            background: #25d366;
+            animation: pulse 1.5s infinite;
+          }
+          .whatsapp:hover {
+            background: #128c7e;
+            animation: bounce 0.5s;
+          }
+
+          /* Floating WhatsApp button */
+          .floating-whatsapp {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            background: #25d366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: pulse 1.5s infinite;
+          }
+          .floating-whatsapp:hover {
+            background: #128c7e;
+            animation: bounce 0.5s;
+          }
+          .floating-whatsapp svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+          }
+
+          /* Pulse animation */
+          @keyframes pulse {
+            0% {
+              box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+              box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+              box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+          }
+
+          /* Bounce animation on hover */
+          @keyframes bounce {
+            0%,
+            100% {
+              transform: translateY(-50%) translateX(0);
+            }
+            50% {
+              transform: translateY(-55%) translateX(-5px);
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Welcome to Jahrock Classroom Resources Box</h1>
+        <p>Click below to access all files:</p>
+        <a
+          class="button"
+          href="https://drive.google.com/drive/folders/1WDZTBr-_gJ6bD-4OYDpcUtRUllULxZR2?usp=sharing"
+          target="_blank"
+          >Explore Resources</a
+        >
+
+        <h2>Share this app</h2>
+        <!-- General share button -->
+        <button onclick="shareApp()">Share App</button>
+
+        <!-- WhatsApp share button in content -->
+        <!-- Floating WhatsApp button (center-left, chat with developer) -->
+        <a
+          class="floating-whatsapp"
+          href="https://wa.me/233551234567?text=Hello%20I%20want%20to%20know%20more%20about%20your%20app"
+          target="_blank"
+        >
+          ☎
+        </a>
+
+        <!-- Floating WhatsApp button (center-left with official logo) -->
+        <a
+          class="floating-whatsapp"
+          href="https://wa.me/?text=Check%20out%20Jahrock%20Classroom%20Resource Box:%20YOUR_APP_LINK_HERE"
+          target="_blank"
+          aria-label="Talk to Berry Tech "
+        >
+          <!-- WhatsApp SVG Icon -->
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.001 3C9.373 3 4 8.373 4 15c0 2.656.874 5.148 2.377 7.198L4 29l6.945-2.27A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12s-5.373-12-12-12zm0 21.333c-2.021 0-3.957-.593-5.616-1.713l-.402-.268-4.125 1.35 1.352-4.07-.262-.414A8.688 8.688 0 0 1 7.333 15c0-4.79 3.878-8.667 8.667-8.667 4.79 0 8.667 3.877 8.667 8.667 0 4.79-3.877 8.667-8.667 8.667zm4.788-6.542c-.262-.131-1.553-.767-1.794-.854-.241-.088-.417-.131-.593.131s-.681.854-.835 1.03c-.154.176-.308.197-.57.066-.262-.131-1.106-.407-2.106-1.296-.778-.694-1.302-1.55-1.456-1.812-.154-.262-.016-.403.115-.534.118-.118.262-.308.393-.462.131-.154.174-.262.262-.437.088-.175.044-.328-.022-.459-.065-.131-.593-1.426-.814-1.951-.214-.514-.432-.445-.593-.454l-.507-.009c-.175 0-.459.066-.7.328-.241.263-.919.897-.919 2.188 0 1.29.94 2.537 1.07 2.713.131.176 1.85 2.829 4.487 3.963.628.271 1.118.434 1.5.556.631.201 1.206.173 1.66.105.507-.075 1.553-.635 1.771-1.248.218-.613.218-1.138.153-1.248-.065-.109-.24-.175-.502-.306z"
+            />
+          </svg>
+        </a>
+
+        <script>
+          function shareApp() {
+            if (navigator.share) {
+              navigator
+                .share({
+                  title: "Jahrock Classroom Resource Box",
+                  text: "Check out Jahrock Classroom Resourcess box!",
+                  url: "YOUR_APP_LINK_HERE",
+                })
+                .catch(console.error);
+            } else {
+              alert(
+                "Sharing not supported on this browser. Copy the link manually:\nYOUR_APP_LINK_HERE"
+              );
+            }
+          }
+        </script>
+      </body>
+    </html>
   </head>
-  <body>
-    <h1>Welcome to My File Sharing App</h1>
-    <p>Click below to access all files:</p>
-    <a
-      class="button"
-      href="https://drive.google.com/drive/folders/1WDZTBr-_gJ6bD-4OYDpcUtRUllULxZR2?usp=sharing"
-      target="_blank"
-      >Open Files</a
-    >
-  </body>
 </html>
+
