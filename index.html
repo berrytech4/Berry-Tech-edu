@@ -10,6 +10,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Jahrock School Facilitators Resource box</title>
+        
+
         <meta name="theme-color" content="#007bff" />
 
         <!-- Google Fonts -->
@@ -181,6 +183,25 @@
             background: #128c7e;
             transform: scale(1.05);
           }
+          .greeting-text {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 20px 0;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out, bounce 2s infinite alternate;
+  color: #007bff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
+
 
           @keyframes wiggle {
             0%,
@@ -227,6 +248,7 @@
       <body>
         <header>
           <h1>📂 Jahrock School Facilitators Resource Box</h1>
+          <div id="greeting" class="greeting-text"></div>
         </header>
 
         <div class="container">
@@ -401,9 +423,33 @@
             alt="WhatsApp"
           />
         </a>
+        <script>
+  function getGreeting() {
+    const now = new Date();
+    const hour = now.getHours();
+    const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+    let greeting = "";
+
+    if (day === 0 || day === 6) {
+      greeting = "🎉 Happy Weekend!";
+    } else if (hour < 12) {
+      greeting = "🌞 Good Morning!";
+    } else if (hour < 18) {
+      greeting = "☀️ Good Afternoon!";
+    } else {
+      greeting = "🌙 Good Evening!";
+    }
+
+    return greeting;
+  }
+
+  document.getElementById("greeting").innerText = getGreeting();
+</script>
+
       </body>
     </html>
   </head>
 </html>
+
 
 
