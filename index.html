@@ -4,452 +4,369 @@
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#007bff" />
     
-        <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Jahrock School Facilitators Resource box</title>
-        
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My File Sharing App</title>
+  <meta name="theme-color" content="#007bff">
 
-        <meta name="theme-color" content="#007bff" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-        <!-- Google Fonts -->
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-          rel="stylesheet"
-        />
-
-        <style>
-          body {
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #f0f4ff, #e3eeff);
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-          }
-
-          header {
-            background: #007bff;
-            color: white;
-            width: 100%;
-            text-align: center;
-            padding: 30px 20px;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          }
-
-          header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 600;
-          }
-
-          .container {
-            margin-top: 30px;
-            text-align: center;
-            max-width: 100%;
-            padding: 20px;
-          }
-
-          /* Horizontal File Grid */
-          .file-grid {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            scroll-snap-type: x mandatory;
-          }
-
-          .file-card {
-            flex: 0 0 220px;
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            scroll-snap-align: start;
-            text-align: center;
-          }
-
-          .file-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-          }
-
-          .file-icon {
-            font-size: 45px;
-            margin-bottom: 12px;
-          }
-
-          .file-name {
-            font-weight: 600;
-            font-size: 17px;
-            margin-bottom: 12px;
-            color: #333;
-          }
-
-          .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-          }
-
-          .action-btn {
-            flex: 1;
-            padding: 8px 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background 0.3s;
-          }
-
-          .view-btn {
-            background: #ffc107;
-            color: #333;
-          }
-
-          .view-btn:hover {
-            background: #e0a800;
-          }
-
-          .download-btn {
-            background: #007bff;
-            color: white;
-          }
-
-          .download-btn:hover {
-            background: #0056b3;
-          }
-
-          /* WhatsApp floating icon */
-          .floating-whatsapp {
-            position: fixed;
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-            background: #25d366;
-            border-radius: 50%;
-            width: 65px;
-            height: 65px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-            z-index: 1000;
-            animation: pulse 1.5s infinite;
-          }
-
-          .floating-whatsapp img {
-            width: 35px;
-            height: 35px;
-          }
-
-          @keyframes pulse {
-            0% {
-              box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-              box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
-            }
-            100% {
-              box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-          }
-
-          /* WhatsApp button below */
-          .whatsapp-btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: #25d366;
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s, background 0.3s;
-            animation: wiggle 2s infinite;
-          }
-
-          .whatsapp-btn:hover {
-            background: #128c7e;
-            transform: scale(1.05);
-          }
-          .greeting-text {
-  font-size: 26px;
-  font-weight: 600;
-  margin: 20px 0;
-  text-align: center;
-  animation: fadeIn 2s ease-in-out, bounce 2s infinite alternate;
-  color: #007bff;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes bounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(-8px); }
-}
-
-
-          @keyframes wiggle {
-            0%,
-            100% {
-              transform: rotate(0deg);
-            }
-            25% {
-              transform: rotate(2deg);
-            }
-            50% {
-              transform: rotate(-2deg);
-            }
-            75% {
-              transform: rotate(1deg);
-            }
-          }
-
-          /* Updates section */
-          .updates {
-            background: white;
-            margin: 40px auto;
-            padding: 20px;
-            max-width: 800px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: left;
-          }
-
-          .updates h2 {
-            margin-top: 0;
-            color: #007bff;
-          }
-
-          .update-item {
-            margin-bottom: 15px;
-          }
-
-          .update-date {
-            font-size: 13px;
-            color: #777;
-          }
-        </style>
-      </head>
-      <body>
-        <header>
-          <h1>📂 Jahrock School Facilitators Resource Box</h1>
-          <div id="greeting" class="greeting-text"></div>
-        </header>
-
-        <div class="container">
-          <p>Explore varieties of educational Resources</p>
-          <p>Choose a category to view or download 👇</p>
-
-          <!-- Horizontal File Grid -->
-          <div class="file-grid">
-            <div class="file-card">
-              <div class="file-icon">📘</div>
-              <div class="file-name">Curriculum</div>
-              <div class="btn-group">
-                <a
-                  class="action-btn view-btn"
-                  href="https://drive.google.com/drive/folders/1h-NlUaFmjh2OS4w1BxTXF3bhRER76hpS?usp=sharing"
-                  target="_blank"
-                  >View</a
-                >
-                <a
-                  class="action-btn download-btn"
-                  href="https://drive.google.com/drive/folders/1h-NlUaFmjh2OS4w1BxTXF3bhRER76hpS?usp=sharing"
-                  target="_blank"
-                  >Download</a
-                >
-              </div>
-            </div>
-
-            <div class="file-card">
-              <div class="file-icon">📦</div>
-              <div class="file-name">Resource Pack</div>
-              <div class="btn-group">
-                <a
-                  class="action-btn view-btn"
-                  href="https://drive.google.com/drive/folders/1d_Yt83vKn_DUrRDiy3KINQWDN_-ehyI0?usp=sharing"
-                  target="_blank"
-                  >View</a
-                >
-                <a
-                  class="action-btn download-btn"
-                  href="https://drive.google.com/drive/folders/1d_Yt83vKn_DUrRDiy3KINQWDN_-ehyI0?usp=sharing"
-                  target="_blank"
-                  >Download</a
-                >
-              </div>
-            </div>
-
-            <div class="file-card">
-              <div class="file-icon">🗓️</div>
-              <div class="file-name">Weekly Lesson Plan</div>
-              <div class="btn-group">
-                <a
-                  class="action-btn view-btn"
-                  href="https://drive.google.com/drive/folders/1vhjikF38uBeg_yv9Sjuo___YOrIJwOY1?usp=sharing"
-                  target="_blank"
-                  >View</a
-                >
-                <a
-                  class="action-btn download-btn"
-                  href="https://drive.google.com/drive/folders/1vhjikF38uBeg_yv9Sjuo___YOrIJwOY1?usp=sharing"
-                  target="_blank"
-                  >Download</a
-                >
-              </div>
-            </div>
-
-            <div class="file-card">
-              <div class="file-icon">🖼️</div>
-              <div class="file-name">Lesson Starters</div>
-              <div class="btn-group">
-                <a
-                  class="action-btn view-btn"
-                  href="https://drive.google.com/drive/folders/1lapR89Uxi7kSWhcUJItduHPfgC5oPaKg?usp=sharing"
-                  target="_blank"
-                  >View</a
-                >
-                <a
-                  class="action-btn download-btn"
-                  href="https://drive.google.com/drive/folders/1lapR89Uxi7kSWhcUJItduHPfgC5oPaKg?usp=sharing"
-                  target="_blank"
-                  >Download</a
-                >
-              </div>
-            </div>
-
-            <div class="file-card">
-              <div class="file-icon">📚</div>
-              <div class="file-name">Textbooks</div>
-              <div class="btn-group">
-                <a
-                  class="action-btn view-btn"
-                  href="https://drive.google.com/drive/folders/1l3ubaFr3FdfAhPzBlg3GBDHeD4nZY0NX?usp=sharing"
-                  target="_blank"
-                  >View</a
-                >
-                <a
-                  class="action-btn download-btn"
-                  href="https://drive.google.com/drive/folders/1l3ubaFr3FdfAhPzBlg3GBDHeD4nZY0NX?usp=sharing"
-                  target="_blank"
-                  >Download</a
-                >
-              </div>
-            </div>
-
-            <div class="file-card">
-              <div class="file-icon">🎥</div>
-              <div class="file-name">Tutorials</div>
-              <div class="btn-group">
-                <a
-                  class="action-btn view-btn"
-                  href="https://drive.google.com/drive/folders/1suosQSKKq8sueRBpCGGcnvejHPvVTA3w?usp=sharing"
-                  target="_blank"
-                  >View</a
-                >
-                <a
-                  class="action-btn download-btn"
-                  href="https://drive.google.com/drive/folders/1suosQSKKq8sueRBpCGGcnvejHPvVTA3w?usp=sharing"
-                  target="_blank"
-                  >Download</a
-                >
-              </div>
-            </div>
-
-            <div class="file-card">
-              <div class="file-icon">📂</div>
-              <div class="file-name">Others</div>
-              <div class="btn-group">
-                <a
-                  class="action-btn view-btn"
-                  href="https://drive.google.com/drive/folders/1F5tnR2xpGRnIQP2kcyJJ-i1L6NXUbbno?usp=sharing"
-                  target="_blank"
-                  >View</a
-                >
-                <a
-                  class="action-btn download-btn"
-                  href="https://drive.google.com/drive/folders/1F5tnR2xpGRnIQP2kcyJJ-i1L6NXUbbno?usp=sharing"
-                  target="_blank"
-                  >Download</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- WhatsApp Animated Button -->
-          <a
-            class="whatsapp-btn"
-            href="https://wa.me/233240082126?text=Hello%20I%20want%20to%20know%20more%20about%20your%20app"
-            target="_blank"
-          >
-            💬 Chat with Berry Tech
-          </a>
-        </div>
-
-        <!-- What's New Section -->
-        <div class="updates">
-          <h2>✨ What's New</h2>
-          <div class="update-item">
-            <strong>Term One Lesson Plans:</strong> All classes uploaded. <br />
-            <strong>Video Tutorial:</strong> How to edit the lesson plans - Will
-            soon be uploaded.
-            <div class="update-date">Sept 4, 2025</div>
-          </div>
-        </div>
-
-        <!-- Floating WhatsApp Icon -->
-        <a
-          class="floating-whatsapp"
-          href="https://wa.me/233240082126?text=Hello%20I%20want%20to%20know%20more%20about%20your%20app"
-          target="_blank"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp"
-          />
-        </a>
-        <script>
-  function getGreeting() {
-    const now = new Date();
-    const hour = now.getHours();
-    const day = now.getDay(); // 0 = Sunday, 6 = Saturday
-    let greeting = "";
-
-    if (day === 0 || day === 6) {
-      greeting = "🎉 Happy Weekend!";
-    } else if (hour < 12) {
-      greeting = "🌞 Good Morning!";
-    } else if (hour < 18) {
-      greeting = "☀️ Good Afternoon!";
-    } else {
-      greeting = "🌙 Good Evening!";
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff, #e3eeff);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
-    return greeting;
-  }
+    header {
+      background: #007bff;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 
-  document.getElementById("greeting").innerText = getGreeting();
-</script>
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+    }
 
-      </body>
-    </html>
-  </head>
+    /* Greeting Text */
+    .greeting-text {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      color: #007bff;
+      margin: 20px 0;
+      animation: fadeIn 2s ease-in-out, bounce 2s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-8px); }
+    }
+
+    .container {
+      margin-top: 10px;
+      text-align: center;
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    /* Horizontal File Grid */
+    .file-grid {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .file-card {
+      flex: 0 0 220px;
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      scroll-snap-align: start;
+      text-align: center;
+    }
+
+    .file-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .file-icon {
+      font-size: 45px;
+      margin-bottom: 12px;
+    }
+
+    .file-name {
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .view-btn {
+      background: #ffc107;
+      color: #333;
+    }
+
+    .view-btn:hover {
+      background: #e0a800;
+    }
+
+    .download-btn {
+      background: #007bff;
+      color: white;
+    }
+
+    .download-btn:hover {
+      background: #0056b3;
+    }
+
+    /* WhatsApp floating icon */
+    .floating-whatsapp {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      background: #25D366;
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 1.5s infinite;
+    }
+
+    .floating-whatsapp img {
+      width: 35px;
+      height: 35px;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* WhatsApp button below */
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: #25D366;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+      transition: transform 0.3s, background 0.3s;
+      animation: wiggle 2s infinite;
+    }
+
+    .whatsapp-btn:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(2deg); }
+      50% { transform: rotate(-2deg); }
+      75% { transform: rotate(1deg); }
+    }
+
+    /* Updates section */
+    .updates {
+      background: white;
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 800px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .updates h2 {
+      margin-top: 0;
+      color: #007bff;
+    }
+
+    .update-item {
+      margin-bottom: 15px;
+    }
+
+    .update-date {
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📂 My File Sharing App</h1>
+  </header>
+
+  <!-- Greeting section -->
+  <div id="greeting" class="greeting-text"></div>
+
+  <div class="container">
+    <p>Choose a category to view or download 👇</p>
+
+    <!-- Horizontal File Grid -->
+    <div class="file-grid">
+      <div class="file-card">
+        <div class="file-icon">📘</div>
+        <div class="file-name">Curriculum</div>
+        <div class="btn-group">
+          <a class="action-btn view-btn" href="YOUR_VIEW_LINK" target="_blank">View</a>
+          <a class="action-btn download-btn" href="YOUR_DOWNLOAD_LINK" target="_blank">Download</a>
+        </div>
+      </div>
+
+      <div class="file-card">
+        <div class="file-icon">📦</div>
+        <div class="file-name">Resource Pack</div>
+        <div class="btn-group">
+          <a class="action-btn view-btn" href="YOUR_VIEW_LINK" target="_blank">View</a>
+          <a class="action-btn download-btn" href="YOUR_DOWNLOAD_LINK" target="_blank">Download</a>
+        </div>
+      </div>
+
+      <div class="file-card">
+        <div class="file-icon">🗓️</div>
+        <div class="file-name">Weekly Lesson Plan</div>
+        <div class="btn-group">
+          <a class="action-btn view-btn" href="YOUR_VIEW_LINK" target="_blank">View</a>
+          <a class="action-btn download-btn" href="YOUR_DOWNLOAD_LINK" target="_blank">Download</a>
+        </div>
+      </div>
+
+      <div class="file-card">
+        <div class="file-icon">🖼️</div>
+        <div class="file-name">Pictures</div>
+        <div class="btn-group">
+          <a class="action-btn view-btn" href="YOUR_VIEW_LINK" target="_blank">View</a>
+          <a class="action-btn download-btn" href="YOUR_DOWNLOAD_LINK" target="_blank">Download</a>
+        </div>
+      </div>
+
+      <div class="file-card">
+        <div class="file-icon">📚</div>
+        <div class="file-name">Textbooks</div>
+        <div class="btn-group">
+          <a class="action-btn view-btn" href="YOUR_VIEW_LINK" target="_blank">View</a>
+          <a class="action-btn download-btn" href="YOUR_DOWNLOAD_LINK" target="_blank">Download</a>
+        </div>
+      </div>
+
+      <div class="file-card">
+        <div class="file-icon">🎥</div>
+        <div class="file-name">Tutorials</div>
+        <div class="btn-group">
+          <a class="action-btn view-btn" href="YOUR_VIEW_LINK" target="_blank">View</a>
+          <a class="action-btn download-btn" href="YOUR_DOWNLOAD_LINK" target="_blank">Download</a>
+        </div>
+      </div>
+
+      <div class="file-card">
+        <div class="file-icon">📂</div>
+        <div class="file-name">Others</div>
+        <div class="btn-group">
+          <a class="action-btn view-btn" href="YOUR_VIEW_LINK" target="_blank">View</a>
+          <a class="action-btn download-btn" href="YOUR_DOWNLOAD_LINK" target="_blank">Download</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Animated Button -->
+    <a class="whatsapp-btn" 
+       href="https://wa.me/233551234567?text=Hello%20I%20want%20to%20know%20more%20about%20your%20app" 
+       target="_blank">
+       💬 Chat with Developer
+    </a>
+  </div>
+
+  <!-- What's New Section -->
+  <div class="updates">
+    <h2>✨ What's New</h2>
+    <div id="updates-list"></div>
+  </div>
+
+  <!-- Floating WhatsApp Icon -->
+  <a class="floating-whatsapp" 
+     href="https://wa.me/233551234567?text=Hello%20I%20want%20to%20know%20more%20about%20your%20app" 
+     target="_blank">
+     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <script>
+    // Greeting logic
+    function getGreeting() {
+      const now = new Date();
+      const hour = now.getHours();
+      const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+      let greeting = "";
+
+      if (day === 0 || day === 6) {
+        greeting = "🎉 Happy Weekend!";
+      } else if (hour < 12) {
+        greeting = "🌞 Good Morning!";
+      } else if (hour < 18) {
+        greeting = "☀️ Good Afternoon!";
+      } else {
+        greeting = "🌙 Good Evening!";
+      }
+
+      return greeting;
+    }
+    document.getElementById("greeting").textContent = getGreeting();
+
+    // Example of dynamic updates (you can replace with JSON fetch later)
+    const updates = [
+      { title: "New Category Added: Tutorials", date: "Sept 5, 2025" },
+      { title: "UI Update: Greeting + Animated Buttons", date: "Sept 5, 2025" }
+    ];
+
+    const updatesList = document.getElementById("updates-list");
+    updates.forEach(update => {
+      const item = document.createElement("div");
+      item.classList.add("update-item");
+      item.innerHTML = `
+        <strong>${update.title}</strong>
+        <div class="update-date">${update.date}</div>
+      `;
+      updatesList.appendChild(item);
+    });
+  </script>
+</body>
 </html>
+
+
 
 
 
