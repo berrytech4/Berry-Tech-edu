@@ -30,61 +30,119 @@
             min-height: 100vh;
           }
 
-          header {
-            background: #007bff;
-            color: white;
-            width: 100%;
-            text-align: center;
-            padding: 25px 15px;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          }
+          /* Welcome Screen */
+      #welcomeScreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: linear-gradient(135deg, #007bff, #00c3ff);
+        color: white;
+        z-index: 1000;
+        animation: fadeIn 1s ease-out;
+      }
+      .logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: pulseRotate 3s infinite;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+      }
+      .logo img {
+        width: 80px;
+        height: 80px;
+      }
+      #welcomeText {
+        margin-top: 20px;
+        font-size: 22px;
+        font-weight: bold;
+        animation: slideUp 1.5s ease-out;
+      }
 
-          header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 600;
-          }
+      @keyframes pulseRotate {
+        0% {
+          transform: scale(1) rotate(0);
+        }
+        50% {
+          transform: scale(1.1) rotate(15deg);
+        }
+        100% {
+          transform: scale(1) rotate(0);
+        }
+      }
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
 
-          /* Greeting Text */
-          .greeting-text {
-            font-size: 22px;
-            font-weight: 700;
-            text-align: center;
-            color: #007bff;
-            margin: 15px 0;
-            animation: fadeIn 2s ease-in-out, bounce 2s infinite alternate;
-          }
+      /* Header */
+      header {
+        text-align: center;
+        padding: 1rem;
+      }
+      header h1 {
+        font-size: 28px;
+        color: #007bff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      header h1 img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      #greeting {
+        font-size: 18px;
+        color: #444;
+      }
 
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(-20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
+      /* Search Bar */
+      #searchBar {
+        display: block;
+        margin: 1rem auto;
+        padding: 10px;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-          @keyframes bounce {
-            from {
-              transform: translateY(0);
-            }
-            to {
-              transform: translateY(-6px);
-            }
-          }
-
-          .container {
-            margin-top: 10px;
-            text-align: center;
-            width: 100%;
-            max-width: 1000px;
-            padding: 20px;
-          }
-
+      /* File Grid */
+      .file-grid {
+        display: flex;
+        overflow-x: auto;
+        padding: 1rem;
+        gap: 1rem;
+        scroll-behavior: smooth;
+      }
           /* Horizontal File Grid */
           .file-grid {
             display: flex;
@@ -522,6 +580,7 @@
     </html>
   </head>
 </html>
+
 
 
 
