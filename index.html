@@ -4,520 +4,605 @@
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#007bff" />
     
-     <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jahrock School Facilitators Resource Box</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: "Segoe UI", sans-serif;
-        background: linear-gradient(135deg, #f5faff, #e6f0ff);
-        color: #333;
-        overflow-x: hidden;
-      }
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#007bff" />
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jahrock School Facilitators Resource Box</title>
+        <style>
+          body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #f5faff, #e6f0ff);
+            color: #333;
+            overflow-x: hidden;
+          }
 
-      /* Welcome Screen */
-      #welcomeScreen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background: linear-gradient(135deg, #007bff, #00c3ff);
-        color: white;
-        z-index: 1000;
-        animation: fadeIn 1s ease-out;
-      }
+          /* Welcome Screen */
+          #welcomeScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(135deg, #007bff, #00c3ff);
+            color: white;
+            z-index: 1000;
+            animation: fadeIn 1s ease-out;
+          }
+          .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulseRotate 3s infinite;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+          }
+          .logo img {
+            width: 80px;
+            height: 80px;
+          }
+          #welcomeText {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            animation: slideUp 1.5s ease-out;
+          }
 
-      .logo {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: pulseRotate 3s infinite;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-      }
+          @keyframes pulseRotate {
+            0% {
+              transform: scale(1) rotate(0);
+            }
+            50% {
+              transform: scale(1.1) rotate(15deg);
+            }
+            100% {
+              transform: scale(1) rotate(0);
+            }
+          }
+          @keyframes slideUp {
+            from {
+              transform: translateY(50px);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
 
-      .logo img {
-        width: 80px;
-        height: 80px;
-      }
+          /* Header */
+          header {
+            text-align: center;
+            padding: 1rem;
+          }
+          header h1 {
+            font-size: 28px;
+            color: #007bff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+          }
+          header h1 img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+          }
+          @keyframes float {
+            0%,
+            100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-8px);
+            }
+          }
+          #greeting {
+            font-size: 18px;
+            color: #444;
+          }
 
-      #welcomeText {
-        margin-top: 20px;
-        font-size: 22px;
-        font-weight: bold;
-        text-align: center;
-        animation: slideUp 1.5s ease-out;
-      }
+          /* Search Bar */
+          #searchBar {
+            display: block;
+            margin: 1rem auto;
+            padding: 10px;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          }
 
-      @keyframes pulseRotate {
-        0% {
-          transform: scale(1) rotate(0);
-        }
-        50% {
-          transform: scale(1.1) rotate(15deg);
-        }
-        100% {
-          transform: scale(1) rotate(0);
-        }
-      }
+          /* File Grid */
+          .file-grid {
+            display: flex;
+            overflow-x: auto;
+            padding: 1rem;
+            gap: 1rem;
+            scroll-behavior: smooth;
+          }
+          .file-card {
+            min-width: 220px;
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+            text-align: center;
+            transition: transform 0.3s;
+          }
+          .file-card:hover {
+            transform: translateY(-5px);
+          }
+          .file-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #007bff;
+          }
+          .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 4px;
+            border: none;
+            border-radius: 20px;
+            background: #f53f08;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+            text-decoration: none;
+          }
+          .btn:hover {
+            background: hsl(92, 96%, 48%);
+          }
+          .counter {
+            font-size: 12px;
+            margin-top: 4px;
+            color: #666;
+          }
 
-      @keyframes slideUp {
-        from {
-          transform: translateY(50px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
+          /* Updates */
+          .updates {
+            background: white;
+            margin: 1.5rem;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+          }
+          .updates h2 {
+            margin-bottom: 0.5rem;
+            color: #007bff;
+          }
+          .update-item {
+            margin-bottom: 8px;
+          }
+          .update-date {
+            font-size: 12px;
+            color: #777;
+          }
 
-      /* Update Slider */
-      .update-slider {
-        background: #000000;
-        color: white;
-        padding: 8px 0;
-        font-size: 16px;
-        font-weight: bold;
-        white-space: nowrap;
-        overflow: hidden;
-        position: relative;
-        text-align: center;
-      }
-      .update-slider span {
-        display: inline-block;
-        padding-left: 100%;
-        animation: scrollLeft 15s linear infinite;
-      }
-      @keyframes scrollLeft {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
-      }
+          /* WhatsApp */
+          .whatsapp-section {
+            text-align: center;
+            margin: 2rem 0;
+          }
+          .whatsapp-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+          }
+          @keyframes pulse {
+            0% {
+              box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+              box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+              box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+          }
 
-      /* Header */
-      header {
-        text-align: center;
-        padding: 1rem;
-      }
+          .update-slider {
+            width: 100%;
+            background: #000000;
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            border-radius: 600px;
+          }
 
-      header h1 {
-        font-size: 28px;
-        color: #007bff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-      }
+          .floating-whatsapp {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25d366;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bounce 2s infinite;
+          }
+          .floating-whatsapp img {
+            width: 30px;
+            height: 30px;
+          }
+          @keyframes bounce {
+            0%,
+            100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-8px);
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen">
+          <div class="logo">
+            <img src="/image/jhr.jpg" alt="School Logo" />
+          </div>
+          <div id="welcomeText">Welcome to Jahrock School Resource Box</div>
+        </div>
 
-      header h1 img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        animation: float 3s ease-in-out infinite;
-      }
+        <header>
+          <h1>
+            <img src="image/jhr.jpg" alt="Logo" /> Jahrock School Facilitators
+            Resource Box
+          </h1>
+          <p id="greeting"></p>
+          <!-- Update Slider -->
+          <div class="update-slider">
+            <span> 📢 Week 4 Lesson Plans Updated for all classes | </span>
+          </div>
+        </header>
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-8px);
-        }
-      }
+        <input
+          type="text"
+          id="searchBar"
+          placeholder="🔍 Search resources..."
+        />
 
-      #greeting {
-        font-size: 18px;
-        color: #444;
-        animation: fadeInText 2s ease-in-out infinite alternate;
-      }
+        <!-- File Grid -->
+        <div class="file-grid" id="fileGrid">
+          <!-- 📘 Curriculum -->
+          <div class="file-card" data-name="Curriculum">
+            <h3>📘 Curriculum</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1h-NlUaFmjh2OS4w1BxTXF3bhRER76hpS?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('curriculum-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1h-NlUaFmjh2OS4w1BxTXF3bhRER76hpS?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('curriculum-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="curriculum-view-count">0</span> | ⬇️
+              <span id="curriculum-download-count">0</span>
+            </div>
+          </div>
 
-      @keyframes fadeInText {
-        from {
-          opacity: 0.6;
-        }
-        to {
-          opacity: 1;
-        }
-      }
+          <!-- 📦 Resource Pack -->
+          <div class="file-card" data-name="Resource Pack">
+            <h3>📦 Resource Pack</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1d_Yt83vKn_DUrRDiy3KINQWDN_-ehyI0?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('resource-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1d_Yt83vKn_DUrRDiy3KINQWDN_-ehyI0?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('resource-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="resource-view-count">0</span> | ⬇️
+              <span id="resource-download-count">0</span>
+            </div>
+          </div>
 
-      /* Search Bar */
-      #searchBar {
-        display: block;
-        margin: 1rem auto;
-        padding: 10px;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 25px;
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
+          <!-- 📑 Scheme of Learning -->
+          <div class="file-card" data-name="Scheme of Learning">
+            <h3>📑 Scheme of Learning</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1VQZ1goXL5djU20XLCJ9CTrffQ3y0UO_x?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('scheme-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1VQZ1goXL5djU20XLCJ9CTrffQ3y0UO_x?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('scheme-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="scheme-view-count">0</span> | ⬇️
+              <span id="scheme-download-count">0</span>
+            </div>
+          </div>
 
-      /* File Grid */
-      .file-grid {
-        display: flex;
-        overflow-x: auto;
-        padding: 1rem;
-        gap: 1rem;
-        scroll-behavior: smooth;
-      }
+          <!-- 🗓 Weekly Lesson Plans -->
+          <div class="file-card" data-name="Weekly Lesson Plans">
+            <h3>🗓 Weekly Lesson Plans</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1vhjikF38uBeg_yv9Sjuo___YOrIJwOY1?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('weekly-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1vhjikF38uBeg_yv9Sjuo___YOrIJwOY1?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('weekly-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="weekly-view-count">0</span> | ⬇️
+              <span id="weekly-download-count">0</span>
+            </div>
+          </div>
 
-      .file-card {
-        min-width: 220px;
-        background: white;
-        border-radius: 15px;
-        padding: 1rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        flex-shrink: 0;
-        text-align: center;
-        transition: transform 0.3s;
-      }
+          <!-- 🎥 Tutorials -->
+          <div class="file-card" data-name="Tutorials">
+            <h3>🎥 Tutorials</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1suosQSKKq8sueRBpCGGcnvejHPvVTA3w?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('tutorial-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1suosQSKKq8sueRBpCGGcnvejHPvVTA3w?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('tutorial-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="tutorial-view-count">0</span> | ⬇️
+              <span id="tutorial-download-count">0</span>
+            </div>
+          </div>
 
-      .file-card:hover {
-        transform: translateY(-5px);
-      }
+          <!-- 📝 Curriculum Assessment -->
+          <div class="file-card" data-name="Curriculum Assessment">
+            <h3>📝 Curriculum Assessment</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1CtYhcuLleefqf9gAuiSZ_PI50vVKy5Py?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('assessment-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1CtYhcuLleefqf9gAuiSZ_PI50vVKy5Py?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('assessment-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="assessment-view-count">0</span> | ⬇️
+              <span id="assessment-download-count">0</span>
+            </div>
+          </div>
 
-      .file-card h3 {
-        font-size: 18px;
-        margin-bottom: 10px;
-        color: #007bff;
-      }
+          <!-- 📚 Textbooks -->
+          <div class="file-card" data-name="Textbooks">
+            <h3>📚 Textbooks</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1l3ubaFr3FdfAhPzBlg3GBDHeD4nZY0NX?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('textbooks-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1l3ubaFr3FdfAhPzBlg3GBDHeD4nZY0NX?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('textbooks-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="textbooks-view-count">0</span> | ⬇️
+              <span id="textbooks-download-count">0</span>
+            </div>
+          </div>
 
-      .btn {
-        display: inline-block;
-        padding: 6px 12px;
-        margin: 4px;
-        border: none;
-        border-radius: 20px;
-        background: #f53f08;
-        color: white;
-        cursor: pointer;
-        font-size: 14px;
-        transition: 0.3s;
-        text-decoration: none;
-      }
+          <!-- 🚀 Lesson Starters -->
+          <div class="file-card" data-name="Lesson Starters">
+            <h3>🚀 Lesson Starters</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1lapR89Uxi7kSWhcUJItduHPfgC5oPaKg?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('starters-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1lapR89Uxi7kSWhcUJItduHPfgC5oPaKg?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('starters-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="starters-view-count">0</span> | ⬇️
+              <span id="starters-download-count">0</span>
+            </div>
+          </div>
 
-      .btn:hover {
-        background: hsl(233, 91%, 46%);
-      }
+          <!-- 📂 Others -->
+          <div class="file-card" data-name="Others">
+            <h3>📂 Others</h3>
+            <a
+              href="https://drive.google.com/drive/folders/1F5tnR2xpGRnIQP2kcyJJ-i1L6NXUbbno?usp=sharing"
+              target="_blank"
+              class="btn"
+              onclick="incrementCount('others-view')"
+              >View</a
+            >
+            <a
+              href="https://drive.google.com/drive/folders/1F5tnR2xpGRnIQP2kcyJJ-i1L6NXUbbno?usp=sharing"
+              download
+              class="btn"
+              onclick="incrementCount('others-download')"
+              >Download</a
+            >
+            <div class="counter">
+              👁️ <span id="others-view-count">0</span> | ⬇️
+              <span id="others-download-count">0</span>
+            </div>
+          </div>
+        </div>
 
-      .counter {
-        font-size: 12px;
-        margin-top: 4px;
-        color: #666;
-      }
+        <!-- Updates -->
+        <div class="updates">
+          <h2>📢 What's New</h2>
+          <div id="updates-list"></div>
+        </div>
 
-      /* WhatsApp */
-      .whatsapp-section {
-        text-align: center;
-        margin: 2rem 0;
-      }
+        <!-- WhatsApp Section -->
+        <div class="whatsapp-section">
+          <a
+            class="whatsapp-btn"
+            href="https://wa.me/233240082126"
+            target="_blank"
+            >💬 Chat with Berry Tech</a
+          >
+        </div>
 
-      .whatsapp-btn {
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 30px;
-        background: #25d366;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        animation: pulse 2s infinite;
-      }
+        <!-- Floating WhatsApp -->
+        <a
+          class="floating-whatsapp"
+          href="https://wa.me/233240082126"
+          target="_blank"
+        >
+          <img src="image/whatsapp.png" alt="WhatsApp" />
+        </a>
 
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-        }
-        70% {
-          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-        }
-      }
+        <script>
+          window.addEventListener("DOMContentLoaded", () => {
+            const welcome = document.getElementById("welcomeScreen");
+            setTimeout(() => {
+              welcome.style.opacity = 0;
+              welcome.style.pointerEvents = "none";
+            }, 4000);
 
-      .floating-whatsapp {
-        position: fixed;
-        left: 20px;
-        bottom: 20px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: #25d366;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: bounce 2s infinite;
-      }
+            // Dynamic greeting
+            const now = new Date();
+            const hour = now.getHours();
+            const day = now.getDay();
+            let greeting = "";
+            if (day === 0 || day === 6) greeting = "🎉 Happy Weekend!";
+            else if (hour < 12) greeting = "🌞 Good Morning!";
+            else if (hour < 18) greeting = "☀️ Good Afternoon!";
+            else greeting = "🌙 Good Evening!";
+            document.getElementById("greeting").textContent = greeting;
 
-      .floating-whatsapp img {
-        width: 30px;
-        height: 30px;
-      }
+            // Updates
+            const updates = [
+              {
+                title: "New Category Added: Curriculum Assessment",
+                title: "New Category Added: Tutorials",
 
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-8px);
-        }
-      }
-    </style>
+                date: "Sept 4, 2025",
+              },
+
+              {
+                title: "",
+                date: "",
+              },
+            ];
+            const updatesList = document.getElementById("updates-list");
+            updates.forEach((u) => {
+              const item = document.createElement("div");
+              item.classList.add("update-item");
+              item.innerHTML = `<strong>${u.title}</strong><div class="update-date">${u.date}</div>`;
+              updatesList.appendChild(item);
+            });
+
+            // Initialize counters
+            const counters = document.querySelectorAll(".counter span");
+            counters.forEach((span) => {
+              const id = span.id.replace("-count", "");
+              const count = localStorage.getItem(id) || 0;
+              span.textContent = count;
+            });
+          });
+
+          // Increment counters
+          function incrementCount(type) {
+            let count = localStorage.getItem(type);
+            count = count ? parseInt(count) + 1 : 1;
+            localStorage.setItem(type, count);
+            const span = document.getElementById(type + "-count");
+            if (span) span.textContent = count;
+          }
+
+          // Search filter
+          const searchBar = document.getElementById("searchBar");
+          const fileCards = document.getElementsByClassName("file-card");
+          searchBar.addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            Array.from(fileCards).forEach((card) => {
+              const name = card.getAttribute("data-name").toLowerCase();
+              card.style.display = name.includes(query) ? "flex" : "none";
+            });
+          });
+        </script>
+      </body>
+    </html>
   </head>
-  <body>
-    <!-- Welcome Screen -->
-    <div id="welcomeScreen">
-      <div class="logo">
-        <img src="image/jhr.jpg" alt="School Logo" />
-      </div>
-      <div id="welcomeText">Welcome to Jahrock Facilitators Resource Box</div>
-    </div>
-
-    <!-- Update Slider -->
-    <div class="update-slider">
-      <span>
-        📢 Week 4 Lesson Plans Updated for all classes | 🚀 | 📚 Textbooks
-      </span>
-    </div>
-
-    <!-- Header -->
-    <header>
-      <h1>
-        <img src="image/jhr.jpg" alt="Logo" /> Jahrock School Facilitators
-        Resource Box
-      </h1>
-      <p id="greeting"></p>
-    </header>
-
-    <!-- Search -->
-    <input type="text" id="searchBar" placeholder="🔍 Search resources..." />
-
-    <!-- File Grid -->
-    <div class="file-grid" id="fileGrid">
-      <!-- Curriculum -->
-      <div class="file-card" data-name="Curriculum">
-        <h3>📘 Curriculum</h3>
-        <a
-          href="https://drive.google.com/drive/folders/1h-NlUaFmjh2OS4w1BxTXF3bhRER76hpS?usp=sharing"
-          target="_blank"
-          class="btn"
-          onclick="incrementCount('curriculum-view')"
-          >View</a
-        >
-        <a
-          href="https://drive.google.com/drive/folders/1h-NlUaFmjh2OS4w1BxTXF3bhRER76hpS?usp=sharing"
-          download
-          class="btn"
-          onclick="incrementCount('curriculum-download')"
-          >Download</a
-        >
-        <div class="counter">
-          👁️ <span id="curriculum-view-count">0</span> | ⬇️
-          <span id="curriculum-download-count">0</span>
-        </div>
-      </div>
-
-      <!-- Lesson Plans -->
-      <div class="file-card" data-name="Lesson Plans">
-        <h3>📝 Lesson Plans</h3>
-        <a
-          href="https://drive.google.com/drive/folders/1vhjikF38uBeg_yv9Sjuo___YOrIJwOY1?usp=sharing"
-          target="_blank"
-          class="btn"
-          onclick="incrementCount('lesson-view')"
-          >View</a
-        >
-        <a
-          href="https://drive.google.com/drive/folders/1vhjikF38uBeg_yv9Sjuo___YOrIJwOY1?usp=sharing"
-          download
-          class="btn"
-          onclick="incrementCount('lesson-download')"
-          >Download</a
-        >
-        <div class="counter">
-          👁️ <span id="lesson-view-count">0</span> | ⬇️
-          <span id="lesson-download-count">0</span>
-        </div>
-      </div>
-
-      <!-- Scheme of Learning -->
-      <div class="file-card" data-name="Scheme of Learning">
-        <h3>📑 Scheme of Learning</h3>
-        <a
-          href="https://drive.google.com/drive/folders/1VQZ1goXL5djU20XLCJ9CTrffQ3y0UO_x?usp=sharing"
-          target="_blank"
-          class="btn"
-          onclick="incrementCount('scheme-view')"
-          >View</a
-        >
-        <a
-          href="https://drive.google.com/drive/folders/1VQZ1goXL5djU20XLCJ9CTrffQ3y0UO_x?usp=sharing"
-          download
-          class="btn"
-          onclick="incrementCount('scheme-download')"
-          >Download</a
-        >
-        <div class="counter">
-          👁️ <span id="scheme-view-count">0</span> | ⬇️
-          <span id="scheme-download-count">0</span>
-        </div>
-      </div>
-
-      <!-- Textbooks -->
-      <div class="file-card" data-name="Textbooks">
-        <h3>📚 Textbooks</h3>
-        <a
-          href="https://drive.google.com/drive/folders/1l3ubaFr3FdfAhPzBlg3GBDHeD4nZY0NX?usp=sharing"
-          target="_blank"
-          class="btn"
-          onclick="incrementCount('textbook-view')"
-          >View</a
-        >
-        <a
-          href="https://drive.google.com/drive/folders/1l3ubaFr3FdfAhPzBlg3GBDHeD4nZY0NX?usp=sharing"
-          download
-          class="btn"
-          onclick="incrementCount('textbook-download')"
-          >Download</a
-        >
-        <div class="counter">
-          👁️ <span id="textbook-view-count">0</span> | ⬇️
-          <span id="textbook-download-count">0</span>
-        </div>
-      </div>
-
-      <!-- Syllabus -->
-      <div class="file-card" data-name="Syllabus">
-        <h3>📖 Others</h3>
-        <a
-          href="https://drive.google.com/drive/folders/1F5tnR2xpGRnIQP2kcyJJ-i1L6NXUbbno?usp=sharing"
-          target="_blank"
-          class="btn"
-          onclick="incrementCount('syllabus-view')"
-          >View</a
-        >
-        <a
-          href="https://drive.google.com/drive/folders/1F5tnR2xpGRnIQP2kcyJJ-i1L6NXUbbno?usp=sharing"
-          download
-          class="btn"
-          onclick="incrementCount('syllabus-download')"
-          >Download</a
-        >
-        <div class="counter">
-          👁️ <span id="syllabus-view-count">0</span> | ⬇️
-          <span id="syllabus-download-count">0</span>
-        </div>
-      </div>
-
-      <!-- BECE Questions and Marking Scheme (NEW) -->
-      <div class="file-card" data-name="BECE Questions and Marking Scheme">
-        <h3>📝 BECE Questions & Marking Scheme</h3>
-        <a
-          href="https://drive.google.com/drive/folders/1ggKaav8SKAXnZyJU-x9LDswd-afQjfOR?usp=sharing"
-          target="_blank"
-          class="btn"
-          onclick="incrementCount('bece-view')"
-          >View</a
-        >
-        <a
-          href="https://drive.google.com/drive/folders/1ggKaav8SKAXnZyJU-x9LDswd-afQjfOR?usp=sharing"
-          download
-          class="btn"
-          onclick="incrementCount('bece-download')"
-          >Download</a
-        >
-        <div class="counter">
-          👁️ <span id="bece-view-count">0</span> | ⬇️
-          <span id="bece-download-count">0</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- WhatsApp Section -->
-    <div class="whatsapp-section">
-      <a class="whatsapp-btn" href="https://wa.me/233240082126" target="_blank"
-        >💬 Chat with Berry Tech</a
-      >
-    </div>
-
-    <!-- Floating WhatsApp -->
-    <a
-      class="floating-whatsapp"
-      href="https://wa.me/233240082126"
-      target="_blank"
-    >
-      <img src="image/whatsapp.png" alt="WhatsApp" />
-    </a>
-
-    <script>
-      // Welcome fade
-      window.addEventListener("DOMContentLoaded", () => {
-        const welcome = document.getElementById("welcomeScreen");
-        setTimeout(() => {
-          welcome.style.opacity = 0;
-          welcome.style.pointerEvents = "none";
-        }, 4000);
-
-        // Greeting
-        const now = new Date();
-        const hour = now.getHours();
-        const day = now.getDay();
-        let greeting = "";
-        if (day === 0 || day === 6) greeting = "🎉 Happy Weekend,facillitator";
-        else if (hour < 12) greeting = "🌞 Good Morning Facilitator";
-        else if (hour < 18) greeting = "☀️ Good Afternoon Facilitator";
-        else greeting = "🌙 Good Evening Facilitator";
-        document.getElementById("greeting").textContent = greeting;
-
-        // Restore counters
-        const counters = document.querySelectorAll(".counter span");
-        counters.forEach((span) => {
-          const id = span.id.replace("-count", "");
-          const count = localStorage.getItem(id) || 0;
-          span.textContent = count;
-        });
-      });
-
-      // Increment counters
-      function incrementCount(type) {
-        let count = localStorage.getItem(type);
-        count = count ? parseInt(count) + 1 : 1;
-        localStorage.setItem(type, count);
-        const span = document.getElementById(type + "-count");
-        if (span) span.textContent = count;
-      }
-
-      // Search filter
-      const searchBar = document.getElementById("searchBar");
-      const fileCards = document.getElementsByClassName("file-card");
-      searchBar.addEventListener("input", function () {
-        const query = this.value.toLowerCase();
-        Array.from(fileCards).forEach((card) => {
-          const name = card.getAttribute("data-name").toLowerCase();
-          card.style.display = name.includes(query) ? "flex" : "none";
-        });
-      });
-    </script>
-  </body>
 </html>
+
+
 
 
 
